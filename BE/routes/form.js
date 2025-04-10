@@ -5,8 +5,8 @@ const studentForm = Router();
 
 studentForm.post('/submit', async function(req, res){
     const user = req.body;
-    let a=await StudentModel.findOne({user.email});
-    let b=await StudentModel.findOne({user.phone});
+    let a=await StudentModel.findOne({email:user.email});
+    let b=await StudentModel.findOne({phone:user.phone});
 
     if(a)
     {
