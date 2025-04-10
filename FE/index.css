@@ -1,0 +1,53 @@
+a {
+    text-decoration: none;
+    cursor:pointer ;
+  }
+  
+a:hover {
+    text-decoration: underline ;
+  }
+  
+  .view-container {
+    position: relative;
+    min-height: 200px;
+  }
+  
+  .fancy-button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fancy-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-25deg);
+    transition: 0.5s;
+  }
+
+  .fancy-button:hover::before {
+    left: 130%;
+  }
+
+  .fancy-button:hover {
+    transform: scale(1.04);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .fancy-button:active {
+    transform: scale(0.97);
+  }

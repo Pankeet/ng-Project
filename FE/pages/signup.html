@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <link rel="stylesheet"  href="signup.css">
+</head>
+
+<body ng-app="SignApp" ng-controller="myCtrl">
+
+  <div class="form" ng-show="form1">
+    <h1>Sign Up</h1>
+
+    <input placeholder="First Name" ng-model="Fname">
+    <input placeholder="Last Name" ng-model="Lname">
+    <input placeholder="email Id" ng-model="U_id">
+    <input type="password" placeholder="Password" ng-model="password">
+    <input type="number" placeholder="Phone Number" ng-model="num">
+    <span class="error-message" ng-bind="result"></span>
+    <input type="date" ng-model="age">
+
+    <button type="submit" ng-click="submit()" style = "margin-bottom: 5px;">Sign Up</button>
+    <span style="font-size: 15px;" > Already a User ? <strong onclick="window.location.href='../index.html'" style = "cursor:pointer ; ">Return</strong></span>
+  </div>
+
+  <script>
+    var app = angular.module('SignApp', []);
+
+    app.controller("myCtrl", function ($scope, $window, $http , checknum) {
+      $scope.form1 = true;
+
+      $scope.submit = function () {
+      var userData = {
+      firstName: $scope.Fname,
+      lastName: $scope.Lname,
+      email: $scope.U_id,
+      password: $scope.password,
+      phone: $scope.num,
+      age : $scope.age ,
+    };
+
+    $http.post('http://localhost:8080/student/forms/submit', userData)
+      .then(function (response) {
+        console.log(response.data);
+        $window.alert(response.data.message );
+        $scope.form1 = false;
+      }, function (error) {
+        console.error(error);
+        $window.alert("Something went wrong. Try again.");
+      });
+  };
+
+      $scope.$watch("num", function (newnum) {
+        $scope.result = checknum.mobnum(newnum);
+      });
+    } );
+
+      // Custom Service
+    app.service('checknum', function () {
+      this.mobnum = function (x) {
+        if (!x) return "";
+        x = x.toString();
+        if (x.length > 10) {
+          return "Please enter 10 digits only.";
+        }
+        if (x.length < 10) {
+          return "Please enter 10 digits.";
+        }
+        return "";
+      };
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<html>
+    <style>
+        .about-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+            background: linear-gradient(to top, #f9f9f9, #e0f7fa);
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Segoe UI', sans-serif;
+            animation: fadeIn 1s ease-in;
+        }
+      
+        .about-container h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+      
+        .intro {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #444;
+            padding: 0 20px;
+        }
+      
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+      
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: text;
+        }
+      
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+      
+        .card h3 {
+            margin-top: 0;
+            color: #00796b;
+        }
+      
+        .card p {
+            color: #555;
+            line-height: 1.6;
+        }
+      
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+      </style>
+<body>
+    <div class="about-container">
+        <h1>About Us</h1>
+        <p class="intro">
+            We're not just another dev team , we are a <strong>cohort</strong> . We build clean, scalable, fast apps and websites that people actually want to use.
+        </p>
+      
+        <div class="cards">
+            <div class="card">
+                <h3>🚀 Our Mission</h3>
+                <p>To launch developers into greatness by building top-tier digital experiences.</p>
+            </div>
+            <div class="card">
+                <h3>👨‍💻 Our Team</h3>
+                <p>We're a bunch of caffeine-fueled engineers and designers who hate sloppy code and love late-night deploys.</p>
+            </div>
+            <div class="card">
+                <h3>🌐 Our Vision</h3>
+                <p>A world of websites that are free of bugs, lag, and websites that look like they were made in labs and not offices</p>
+            </div>
+        </div>
+      </div>
+      
+</body>
+</html>
+
+  
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="supportApp">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    input:hover {
+      transform: translateY(-1px);
+      border: 0.5px solid black;
+      box-shadow: 0 0 3px gray;
+      transition: 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+<div ng-controller="SupportController">
+  <h1>Zerodha - Support Center</h1>
+
+  <div>
+    <h2>Frequently Asked Questions</h2>
+    <input type="text" placeholder="Search FAQ..." ng-model="searchText" />
+
+    <div>
+      <ul>
+        <li ng-repeat="i in faqs | filter:searchText" style="cursor: pointer;">{{ i }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  const app = angular.module('supportApp', []);
+  app.controller('SupportController', function($scope) {
+    $scope.faqs = [
+      'Customer Satisfaction',
+      'Wrong prices',
+      'Extra Expenses included'
+    ];
+  });
+</script>
+
+</body>
+</html>
