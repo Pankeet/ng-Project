@@ -15,10 +15,30 @@ studentForm.post('/submit', async function(req, res){
         phone: user.phone,
         dob : user.age 
     })
+    let a=await StudentModel.findOne({email});
+    let b=await StudentModel.findOne({phone});
+
+    if(a)
+    {
+        return res.status(400).json({
+            success:false,
+            message:"Email already exists"
+        })
+    }
+
+    if(b)
+    {
+        return res.status(400).json({
+            success:false,
+            message:"Phone number already exists"
+        })
+    }
         res.json({
             message : "User Detailed Recorded Successfully"
         })
     }
+
+
     catch(e){
         console.log(e);
         res.status(404).json({
