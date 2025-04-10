@@ -42,7 +42,7 @@ studentForm.post('/submit', async function(req, res){
     catch(e){
         console.log(e);
         res.status(404).json({
-            message : "Somthing went in Parthism",
+            message : "Somthing went wrong",
          })
     }
 });
