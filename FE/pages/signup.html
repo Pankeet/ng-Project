@@ -39,7 +39,7 @@
       age : $scope.age ,
     };
 
-    $http.post('http://localhost:8080/student/forms/submit', userData)
+    $http.post('https://ng-project.onrender.com/student/forms/submit', userData)
       .then(function (response) {
         console.log(response.data);
         $window.alert(response.data.message );
