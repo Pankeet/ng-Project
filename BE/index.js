@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const { studentForm } = require('./routes/form');
 
-app.use(cors());
+app.use(cors({ origin: "https://https://zerohda.vercel.app"}));
+
 app.use(express.json());
 app.use('/student/forms', studentForm);
 async function main(){
