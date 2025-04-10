@@ -10,7 +10,7 @@ app.use(express.json());
 app.use('/student/forms', studentForm);
 async function main(){
     app.listen(8080);
-    await mongoose.connect("mongodb+srv://Pankeet16:AffQ5L0g0l9KRR1x@pankeet16.f6afc.mongodb.net/Student-Form");
+    await mongoose.connect(process.env.MONGO_URL);
     console.log("connected to Db");
 }
 main();
