@@ -5,18 +5,8 @@ const studentForm = Router();
 
 studentForm.post('/submit', async function(req, res){
     const user = req.body;
-    
-    try{
-    await StudentModel.create({
-        firstname: user.firstName,
-        lastname: user.lastName,
-        email: user.email,
-        password: user.password,
-        phone: user.phone,
-        dob : user.age 
-    })
-    let a=await StudentModel.findOne({email});
-    let b=await StudentModel.findOne({phone});
+    let a=await StudentModel.findOne({user.email});
+    let b=await StudentModel.findOne({user.phone});
 
     if(a)
     {
@@ -33,6 +23,16 @@ studentForm.post('/submit', async function(req, res){
             message:"Phone number already exists"
         })
     }
+    try{
+    await StudentModel.create({
+        firstname: user.firstName,
+        lastname: user.lastName,
+        email: user.email,
+        password: user.password,
+        phone: user.phone,
+        dob : user.age 
+    })
+    
         res.json({
             message : "User Detailed Recorded Successfully"
         })
