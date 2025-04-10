@@ -46,7 +46,7 @@
         $scope.form1 = false;
       }, function (error) {
         console.error(error);
-        $window.alert(response.data.message);
+        $window.alert(error.message);
       });
   };
 
