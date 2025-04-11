@@ -4,17 +4,10 @@ const { StudentModel } = require('../config/db');
 const studentForm = Router();
 
 studentForm.post('/submit', async function(req, res){
-    const user = req.body;
-    
+        
     try{
-    await StudentModel.create({
-        firstname: user.firstName,
-        lastname: user.lastName,
-        email: user.email,
-        password: user.password,
-        phone: user.phone,
-        dob : user.age 
-    })
+    const user = req.body;
+
     let a=await StudentModel.findOne({email});
     let b=await StudentModel.findOne({phone});
 
@@ -33,6 +26,16 @@ studentForm.post('/submit', async function(req, res){
             message:"Phone number already exists"
         })
     }
+
+    await StudentModel.create({
+        firstname: user.firstName,
+        lastname: user.lastName,
+        email: user.email,
+        password: user.password,
+        phone: user.phone,
+        dob : user.age 
+    })
+   
         res.json({
             message : "User Detailed Recorded Successfully"
         })
@@ -42,7 +45,7 @@ studentForm.post('/submit', async function(req, res){
     catch(e){
         console.log(e);
         res.status(404).json({
-            message : "Somthing went in Parthism",
+            message : "Somthing went wrong",
          })
     }
 });
