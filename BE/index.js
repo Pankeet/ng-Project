@@ -3,9 +3,9 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { studentForm } = require('./routes/form');
+require('dotenv').config();
 
 app.use(cors({ origin: "*"}));
-
 app.use(express.json());
 app.use('/student/forms', studentForm);
 async function main(){
