@@ -10,7 +10,6 @@ const studentData = new Schema({
     dob:{type:String,required:true}
 }, {timestamps : true});
 
-const StudentModel = mongoose.model('studentData', studentData);
+const StudentModel = mongoose.model('studentData', studentData , 'metaData');
 
 module.exports = { StudentModel };
- 
