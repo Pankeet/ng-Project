@@ -6,60 +6,70 @@
   <link rel="stylesheet"  href="signup.css">
 </head>
 
-<body ng-app="SignApp" ng-controller="myCtrl">
+<body ng-app="SignApp" ng-controller="myCtrl" ng-init="form1 = true">
 
   <div class="form" ng-show="form1">
-    <h1>Sign Up</h1>
+    <h2>Sign Up</h2>
+    <form name="metaData" novalidate>
 
-    <input placeholder="First Name" ng-model="Fname">
-    <input placeholder="Last Name" ng-model="Lname">
-    <input placeholder="email Id" ng-model="U_id">
-    <input type="password" placeholder="Password" ng-model="password">
-    <input type="number" placeholder="Phone Number" ng-model="num">
-    <span class="error-message" ng-bind="result"></span>
-    <input type="date" ng-model="age">
+      <input placeholder="First Name" ng-model="Fname" name="fname" required>
+      <input placeholder="Last Name" ng-model="Lname" name="lname" required>
+      <input type="email" placeholder="email Id" ng-model="U_id" name="email" required>
+      <input type="password" placeholder="Password" ng-model="password" name="password" required>
+      <input type="number" placeholder="Phone Number" ng-model="num" name="pnumber" required>
+      <span class="error-message" ng-bind="result"></span>
+      <input type="date" ng-model="age" name="date" required>
 
-    <button type="submit" ng-click="submit()" style = "margin-bottom: 5px;">Sign Up</button>
-    <span style="font-size: 15px;" > Already a User ? <strong onclick="window.location.href='../index.html'" style = "cursor:pointer ; ">Return</strong></span>
+      <button type="submit" ng-click="submit()" ng-hide = "metaData.$invalid || !validNumber">Sign Up</button>
+
+
+    </form>
+    <span style="font-size: 15px;"> Already a User? <strong onclick="window.location.href='../index.html'" style="cursor:pointer;">Return</strong></span>
   </div>
 
   <script>
     var app = angular.module('SignApp', []);
-
-    app.controller("myCtrl", function ($scope, $window, $http , checknum) {
-      $scope.form1 = true;
-
+  
+    app.controller("myCtrl", function ($scope, $window, $http, checknum) {
+      // Handle the event of submit button click
       $scope.submit = function () {
-      var userData = {
-      firstName: $scope.Fname,
-      lastName: $scope.Lname,
-      email: $scope.U_id,
-      password: $scope.password,
-      phone: $scope.num,
-      age : $scope.age ,
-    };
+        var userData = {
+          firstName: $scope.Fname,
+          lastName: $scope.Lname,
+          email: $scope.U_id,
+          password: $scope.password,
+          phone: $scope.num,
+          age: $scope.age,
+        };
 
-    $http.post('https://ng-project.onrender.com/student/forms/submit', userData)
-      .then(function (response) {
-        console.log(response.data);
-        $window.alert(response.data.message );
-        $scope.form1 = false;
-      }, function (error) {
-        console.error(error);
-        $window.alert(error.data.message);
-      });
-  };
+        // Send Request to backend on Submit Button click
+        $http.post('http://localhost:8080/student/forms/submit', userData)
+          .then(function (response) {
+            $window.alert(response.data.message);
+            $scope.form1 = false;
+          }, function (error) {
+            $window.alert(error.data.message);
+          });
+      };
 
+      // Continuously Watch Phone Number for changes
       $scope.$watch("num", function (newnum) {
         $scope.result = checknum.mobnum(newnum);
+        $scope.validNumber = ($scope.result === '');
       });
-    } );
+    });
 
-      // Custom Service
+    // Custom Service for phone number validation
     app.service('checknum', function () {
       this.mobnum = function (x) {
         if (!x) return "";
+
         x = x.toString();
+
+        if (!/^[7-9]/.test(x)) {
+          return "Please enter a valid number";
+        }
+        
         if (x.length > 10) {
           return "Please enter 10 digits only.";
         }
