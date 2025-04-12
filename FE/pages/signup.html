@@ -43,7 +43,7 @@
         };
 
         // Send Request to backend on Submit Button click
-        $http.post('http://localhost:8080/student/forms/submit', userData)
+        $http.post('https://ng-project.onrender.com/student/forms/submit', userData)
           .then(function (response) {
             $window.alert(response.data.message);
             $scope.form1 = false;
