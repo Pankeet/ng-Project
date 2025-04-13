@@ -5,7 +5,6 @@ const cors = require('cors');
 const { studentForm } = require('./routes/form');
 require('dotenv').config();
 
-app.use(express.static('public'));
 app.use(cors({ origin: "*"}));
 app.use(express.json());
 app.use('/student/forms', studentForm);

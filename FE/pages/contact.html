@@ -1,8 +1,48 @@
-<div>
-  <nav>
-    <a href="https://github.com/Pankeet" target="_blank">GitHub</a><br />
-    <a href="https://www.linkedin.com/in/pankeet04" target="_blank">LinkedIn</a><br />
-    <a href="https://codeforces.com/profile/Pankeet04" target="_blank">Codeforces</a><br />
-  </nav>
-</div>
-  
+  <style>
+    div {
+      text-align: center;
+    }
+
+    nav {
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact {
+      text-decoration: none;
+      font-size: 18px;
+      color: #1e2a47;
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .contact:hover {
+      background-color: #3182ce;
+      transform: translateY(-5px);
+    }
+
+    .contact:active {
+      transform: translateY(3px);
+      background-color: #2b6cb0;
+    }
+
+    .contact:focus {
+      outline: 2px solid black;
+      outline-offset: 4px;
+    }
+
+  </style>
+<body>
+  <div>
+    <nav >
+      <a href="https://github.com/Pankeet" target="_blank"  class="contact">GitHub</a>
+      <a href="https://www.linkedin.com/in/pankeet04" target="_blank" class="contact">LinkedIn</a>
+      <a href="https://codeforces.com/profile/Pankeet04" target="_blank" class="contact">Codeforces</a>
+    </nav>
+  </div>
+</body>
+</html>
