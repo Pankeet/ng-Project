@@ -10,18 +10,22 @@
 
   <div class="form" ng-show="form1">
     <h2>Sign Up</h2>
-    <form name="metaData" novalidate>
-
-      <input placeholder="First Name" ng-model="Fname" name="fname" required>
-      <input placeholder="Last Name" ng-model="Lname" name="lname" required>
-      <input type="email" placeholder="email Id" ng-model="U_id" name="email" required>
-      <input type="password" placeholder="Password" ng-model="password" name="password" required>
-      <input type="number" placeholder="Phone Number" ng-model="num" name="pnumber" required>
+    <form id="metaData"method="post" accept-charset="UTF-8">
+      <label for="Firstname" ></label>
+      <input placeholder="First Name" ng-model="Fname" id="fname" required>
+      <label for ='Lastname'></label>
+      <input placeholder="Last Name" ng-model="Lname" id="lname" required>
+      <label for ='email'></label>
+      <input type="email" placeholder="email Id" ng-model="U_id" id="email" required>
+      <label for ='password'></label>
+      <input type="password" placeholder="Password" ng-model="password" id="password" required>
+      <label for="PhoenNumber"></label>
+      <input type="number" placeholder="Phone Number" ng-model="num" id="pnumber" required>
       <span class="error-message" ng-bind="result"></span>
-      <input type="date" ng-model="age" name="date" required>
+      <label for ="dob"></label>
+      <input type="date" ng-model="age" id="date" required>
 
       <button type="submit" ng-click="submit()" ng-hide = "metaData.$invalid || !validNumber">Sign Up</button>
-
 
     </form>
     <span style="font-size: 15px;"> Already a User? <strong onclick="window.location.href='../index.html'" style="cursor:pointer;">Return</strong></span>

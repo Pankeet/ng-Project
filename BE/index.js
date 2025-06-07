@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { studentForm } = require('./routes/form');
+const { studentForm } = require('./controllers/form');
 require('dotenv').config();
 
 app.use(cors({ origin: "*"}));

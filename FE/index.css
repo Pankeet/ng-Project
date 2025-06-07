@@ -28,7 +28,6 @@ a:hover {
   }
 
   .fancy-button::before {
-    content: '';
     position: absolute;
     top: 0;
     left: -75%;
