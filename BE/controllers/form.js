@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const mongoose = require('mongoose');
-const { StudentModel } = require('../config/db');
+const { StudentModel } = require('../model/db');
 const studentForm = Router();
 
 studentForm.post('/submit', async function(req, res){
@@ -17,7 +17,7 @@ studentForm.post('/submit', async function(req, res){
 
         if(a)
         {
-            return res.status(400).json({
+            return res.status(409).json({
                 success:false,
                 message:"Email already exists"
             })
@@ -25,7 +25,7 @@ studentForm.post('/submit', async function(req, res){
 
         if(b)
         {
-            return res.status(400).json({
+            return res.status(409).json({
                 success:false,
                 message:"Phone number already exists"
             })

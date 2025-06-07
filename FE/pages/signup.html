@@ -4,26 +4,28 @@
   <title>Sign Up</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <link rel="stylesheet"  href="signup.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body ng-app="SignApp" ng-controller="myCtrl" ng-init="form1 = true">
 
   <div class="form" ng-show="form1">
     <h2>Sign Up</h2>
-    <form id="metaData"method="post" accept-charset="UTF-8">
+    <form name="metaData" method="post" accept-charset="UTF-8">
       <label for="Firstname" ></label>
-      <input placeholder="First Name" ng-model="Fname" id="fname" required>
+      <input placeholder="First Name" ng-model="Fname" name="fname" required>
       <label for ='Lastname'></label>
-      <input placeholder="Last Name" ng-model="Lname" id="lname" required>
+      <input placeholder="Last Name" ng-model="Lname" name="lname" required>
       <label for ='email'></label>
-      <input type="email" placeholder="email Id" ng-model="U_id" id="email" required>
+      <input type="email" placeholder="email Id" ng-model="U_id" name="email" required>
       <label for ='password'></label>
-      <input type="password" placeholder="Password" ng-model="password" id="password" required>
+      <input type="password" placeholder="Password" ng-model="password" name="password" required>
       <label for="PhoenNumber"></label>
-      <input type="number" placeholder="Phone Number" ng-model="num" id="pnumber" required>
+      <input type="number" placeholder="Phone Number" ng-model="num" name="pnumber" required>
       <span class="error-message" ng-bind="result"></span>
       <label for ="dob"></label>
-      <input type="date" ng-model="age" id="date" required>
+      <input type="text" ng-model="age" id="date" name='date' placeholder="Date of Birth" required>
 
       <button type="submit" ng-click="submit()" ng-hide = "metaData.$invalid || !validNumber">Sign Up</button>
 
@@ -32,6 +34,11 @@
   </div>
 
   <script>
+
+    flatpickr("#date", {
+    dateFormat: "d-m-Y" 
+  });
+
     var app = angular.module('SignApp', []);
   
     app.controller("myCtrl", function ($scope, $window, $http, checknum) {
