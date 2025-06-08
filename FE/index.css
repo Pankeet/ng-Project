@@ -3,31 +3,36 @@ a {
     cursor:pointer ;
   }
   
-a:hover {
-    text-decoration: underline ;
-  }
-  
   .view-container {
     position: relative;
     min-height: 200px;
   }
   
   .fancy-button {
-    padding: 10px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding-left: 5px;
+    padding-right: 5px;
     background: linear-gradient(135deg, #6e8efb, #a777e3);
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    border: none;
-    border-radius: 40px;
+    color: beige;
+    font-size: 17px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
     position: relative;
     overflow: hidden;
+    white-space: nowrap;
+    line-height: 1;
   }
-
+  
+  
   .fancy-button::before {
+    content: "";
     position: absolute;
     top: 0;
     left: -75%;
@@ -37,16 +42,18 @@ a:hover {
     transform: skewX(-25deg);
     transition: 0.5s;
   }
-
+  
   .fancy-button:hover::before {
-    left: 130%;
+    left: 101%;
   }
-
+  
   .fancy-button:hover {
-    transform: scale(1.04);
-    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   }
-
+  
   .fancy-button:active {
-    transform: scale(0.97);
+    transform: scale(105%);
   }
+  
+  
