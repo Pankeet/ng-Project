@@ -1,4 +1,4 @@
-/BE/node_modules/
-/FE/angular.js
+/server/node_modules/
+/client/angular.js
 .vercel
-/BE/.env
+/server/.env
